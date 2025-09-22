@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        canvas {
+            border: 2px solid #000;
+        }
+
+        .theme {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        select, input[type="color"] {
+            margin-top: 10px;
+            padding: 5px;
+        }
+    </style>
+    <title>EmoSketch Quest</title>
+</head>
+<body>
+    <h1>EmoSketch Quest</h1>
+    <div>
+        <label for="themeSelect">Select Theme:</label>
+        <select id="themeSelect">
+            <option value="Nature">Nature</option>
+            <option value="Animals">Animals</option>
+            <option value="Fantasy">Fantasy</option>
+            <!-- Add more theme options here -->
+        </select>
+    </div>
+    <div class="theme">
+        <p>Theme: <span id="theme">Nature</span></p>
+    </div>
+    <canvas id="sketchCanvas" width="400" height="400"></canvas>
+    <input type="color" id="colorPicker" value="#000000">
+    <button id="clearCanvas">Clear Canvas</button>
+    <button id="saveSketch">Save Sketch</button>
+    <script>
+        const canvas = document.getElementById("sketchCanvas");
+        const context = canvas.getContext("2d");
+        const clearButton = document.getElementById("clearCanvas");
+        const themeSelect = document.getElementById("themeSelect");
+        const themeText = document.getElementById("theme");
+        const colorPicker = document.getElementById("colorPicker");
+        const saveButton = document.getElementById("saveSketch");
+
+        let isDrawing = false;
+
+        canvas.addEventListener("mousedown", () => {
+            isDrawing = true;
+        });
+
+        canvas.addEventListener("mouseup", () => {
+            isDrawing = false;
+            context.beginPath();
+        });
+
+        canvas.addEventListener("mousemove", draw);
+
+        clearButton.addEventListener("click", clearCanvas);
+
+        themeSelect.addEventListener("change", () => {
+            themeText.textContent = themeSelect.value;
+        });
+
+        colorPicker.addEventListener("input", () => {
+            context.strokeStyle = colorPicker.value;
+        });
+
+        saveButton.addEventListener("click", saveSketch);
+
+        function draw(event) {
+            if (!isDrawing) return;
+
+            context.lineWidth = 2;
+            context.lineCap = "round";
+
+            context.lineTo(event.clientX - canvas.getBoundingClientRect().left, event.clientY - canvas.getBoundingClientRect().top);
+            context.stroke();
+            context.beginPath();
+            context.moveTo(event.clientX - canvas.getBoundingClientRect().left, event.clientY - canvas.getBoundingClientRect().top);
+        }
+
+        function clearCanvas() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function saveSketch() {
+            const sketchImage = canvas.toDataURL("image/png");
+            const link = document.createElement("a");
+            link.href = sketchImage;
+            link.download = "sketch.png";
+            link.click();
+        }
+    </script>
+</body>
+</html>
