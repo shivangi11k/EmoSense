@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="links.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <style>
+        /* Main styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Container for overlapping boxes */
+        .option-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5; /* Optional background color for the container */
+        }
+
+        /* Styling for each option box */
+        .option-box {
+            width: 200px;
+            height: 200px;
+            background-color: transparent; /* Remove the background color */
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .option-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Icon and text styles */
+        .option-icon {
+            color: #333; /* Change icon color */
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .option-text {
+            font-size: 1.2rem;
+            color: #333; /* Change text color */
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="option-container">
+        <div class="option-box" onclick="chooseOption('bad-day')">
+            <i class="far fa-frown option-icon"></i>
+
+            <h3 class="option-text">Having a Bad Day</h3>
+        </div>
+        <div class="option-box" onclick="chooseOption('stressed')">
+            <i class="far fa-tired option-icon"></i>
+
+            <h3 class="option-text">Feeling Stressed</h3>
+        </div>
+    </div>
+
+    <script>
+        function chooseOption(option) {
+            // Redirect to different pages based on the chosen option
+            if (option === 'bad-day') {
+                window.location.href = "http://127.0.0.1:5500/Badday-options.html"; // Replace with your actual page URL
+            } else if (option === 'stressed') {
+                window.location.href = 'stressed_page.html'; // Replace with your actual page URL
+            }
+        }
+    </script>
+</body>
+</html>
+

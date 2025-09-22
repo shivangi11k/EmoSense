@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="links.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <style>
+        /* Additional CSS styles for the overlapping boxes */
+        .option-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .option-box {
+            width: 200px;
+            height: 200px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin: 20px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .option-box:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="option-container">
+        <div class="option-box" onclick="chooseOption('games')">
+            <i class="fas fa-gamepad fa-4x"></i>
+            <h3>Games</h3>
+        </div>
+        <div class="option-box" onclick="chooseOption('quizzes')">
+            <i class="fas fa-question-circle fa-4x"></i>
+            <h3>Quizzes</h3>
+        </div>
+        
+    </div>
+
+    <footer>
+        <p>
+            Created with <i class="fa fa-heart"></i> by
+            <a target="_blank" href="https://gitlab.com/blsailaja_/emosense">Sailaja, Tejaswi, Shivangi, Prerna, Anjani</a>
+            - Read how WE created this and how you can join the challenge
+            <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+        </p>
+    </footer>
+
+    <script>
+        function chooseOption(option) {
+            // Redirect to different pages based on the chosen option
+            if (option === 'games') {
+                window.location.href = 'games_page.html'; // Replace with your actual page URL
+            } else if (option === 'quizzes') {
+                window.location.href = 'quizzes_page.html'; // Replace with your actual page URL
+            } 
+        }
+        
+    </script>
+    
+</body>
+</html>
+

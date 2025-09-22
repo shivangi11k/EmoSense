@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="links.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <style>
+        /* Additional CSS styles for the option box */
+        .option-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .option-box {
+            width: 200px;
+            height: 200px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin: 20px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .option-box:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="option-container">
+        <div class="option-box" onclick="chooseOption('journaling')">
+            <i class="fas fa-pencil-alt fa-4x"></i>
+            <h3>Journaling</h3>
+        </div>
+    </div>
+
+
+    <script>
+        function chooseOption(option) {
+            if (option === 'journaling') {
+                window.location.href = 'journal.html';
+            }
+        }
+    </script>
+</body>
+</html>
